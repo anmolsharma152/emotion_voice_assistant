@@ -1,0 +1,11 @@
+sounddevice
+pyaudio
+librosa
+transformers
+spacy
+rasa
+pyttsx3
+gtts
+whisper
+vosk
+asyncio 
