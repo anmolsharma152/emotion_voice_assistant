@@ -3,7 +3,7 @@ pyaudio
 librosa
 transformers
 spacy
-rasa
+#rasa
 pyttsx3
 gtts
 whisper

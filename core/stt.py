@@ -6,7 +6,7 @@ import wave
 import os
 
 class SpeechToText:
-    def __init__(self, model_path="model"): 
+    def __init__(self, model_path="models/vosk-model-small-en-us-0.15"): 
         if not os.path.exists(model_path):
             raise FileNotFoundError(f"Vosk model not found at {model_path}. Download and unpack a model from https://alphacephei.com/vosk/models")
         self.model = Model(model_path)
