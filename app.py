@@ -10,16 +10,17 @@ from core.respond import ResponseGenerator
 from core.tts import TextToSpeech
 import os
 
+
 def main():
     # Step 1: Record audio
     capture = AudioCapture()
-    wav_path = capture.record(duration=3, filename="audio/output.wav")
+    wav_path = capture.record(duration=10, filename="audio/output.wav")
 
     # Step 2: Transcribe audio
     model_path = "models/vosk"
     if not os.path.exists(model_path):
         print(f"Vosk model not found at {model_path}.")
-        print("Download a model from https://alphacephei.com/vosk/models and unpack it to models/vosk")
+        print("Download a model and unpack it to models/vosk")
         return
     stt = SpeechToText(model_path=model_path)
     text = stt.transcribe(wav_path)
@@ -41,5 +42,6 @@ def main():
     tts = TextToSpeech()
     tts.speak(response, emotion=emotion)
 
+
 if __name__ == "__main__":
-    main() 
+    main()
