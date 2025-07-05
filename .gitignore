@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+
+# Audio and model files
+*.wav
+models/vosk
+models/emotion_classifier.pkl
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# pyenv version file (optional, remove # to ignore)
+# .python-version 
