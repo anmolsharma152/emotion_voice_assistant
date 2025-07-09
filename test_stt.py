@@ -8,7 +8,7 @@ if __name__ == "__main__":
     wav_file = recorder.record(duration=5, filename="test_output.wav")
 
     # Step 2: Transcribe the recorded audio
-    stt = SpeechToText(model_path="models/vosk-model-small-en-us-0.15")
+    stt = SpeechToText()
     transcription = stt.transcribe(wav_file)
 
     # Step 3: Print the transcription

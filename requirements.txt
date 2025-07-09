@@ -7,5 +7,5 @@ spacy
 pyttsx3
 gtts
 whisper
-vosk
+google-cloud-speech
 asyncio 

@@ -2,7 +2,7 @@
 
 ## Modules
 - capture.py: Real-time microphone input
-- stt.py: Speech-to-text (Vosk)
+- stt.py: Speech-to-text (Google Cloud STT)
 - emotion.py: Emotion detection (MFCC + synthetic classifier, text fallback)
 - intent.py: Intent detection (rule-based)
 - respond.py: Response generation
@@ -12,7 +12,7 @@
 ## Roadmap
 - [x] Project structure and stubs
 - [x] Implement audio capture
-- [x] Integrate Vosk STT
+- [x] Integrate Google Cloud STT
 - [x] Add synthetic emotion detection (audio/text)
 - [x] Add rule-based intent detection
 - [x] Response generation

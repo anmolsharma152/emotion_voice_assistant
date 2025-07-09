@@ -8,7 +8,6 @@ from core.emotion import EmotionDetector
 from core.intent import IntentDetector
 from core.respond import ResponseGenerator
 from core.tts import TextToSpeech
-import os
 
 
 def main():
@@ -17,12 +16,7 @@ def main():
     wav_path = capture.record(duration=10, filename="audio/output.wav")
 
     # Step 2: Transcribe audio
-    model_path = "models/vosk"
-    if not os.path.exists(model_path):
-        print(f"Vosk model not found at {model_path}.")
-        print("Download a model and unpack it to models/vosk")
-        return
-    stt = SpeechToText(model_path=model_path)
+    stt = SpeechToText()
     text = stt.transcribe(wav_path)
     print(f"Recognized text: {text}")
 

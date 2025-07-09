@@ -29,7 +29,7 @@ A modular, real-time voice assistant that understands what users say — and how
 ## 🧠 System Architecture
 
 ```text
-Voice Input ──► Speech-to-Text (Vosk) ──► Emotion Detection (audio/text) ──► Intent Detection (rule-based) ──► Adaptive Response ──► Text-to-Speech (Coqui)
+Voice Input ──► Speech-to-Text (Google Cloud STT) ──► Emotion Detection (audio/text) ──► Intent Detection (rule-based) ──► Adaptive Response ──► Text-to-Speech (Google TTS)
 ```
 
 ---
@@ -39,11 +39,11 @@ Voice Input ──► Speech-to-Text (Vosk) ──► Emotion Detection (audio/t
 | Module           | Function                                             |
 |------------------|------------------------------------------------------|
 | `capture.py`     | Real-time microphone input                           |
-| `stt.py`         | Converts voice to text (Vosk STT)                    |
+| `stt.py`         | Converts voice to text (Google Cloud STT)            |
 | `emotion.py`     | Detects emotion from voice (MFCC + classifier, or text fallback) |
 | `intent.py`      | Extracts user intent using rule-based NLP            |
 | `respond.py`     | Generates responses based on emotion and intent      |
-| `tts.py`         | Converts final response to voice (Coqui TTS)         |
+| `tts.py`         | Converts final response to voice (Google TTS)        |
 | `app.py`         | Main loop coordinating all modules                   |
 
 ---
@@ -52,10 +52,10 @@ Voice Input ──► Speech-to-Text (Vosk) ──► Emotion Detection (audio/t
 
 - **Language**: Python 3.10 (via pyenv)
 - **Audio**: `sounddevice`, `librosa`
-- **STT**: Vosk
+- **STT**: Google Cloud Speech-to-Text
 - **Emotion Detection**: MFCC + synthetic classifier (ready for real model)
 - **NLP**: Rule-based (upgradeable to ML/transformers)
-- **TTS**: Coqui TTS (Tacotron2-DDC, Hifi-GAN)
+- **TTS**: Google Text-to-Speech (gTTS)
 - **Async Execution**: `threading`
 
 ---
@@ -64,10 +64,10 @@ Voice Input ──► Speech-to-Text (Vosk) ──► Emotion Detection (audio/t
 
 - [x] Modular project structure
 - [x] Real-time audio capture
-- [x] Vosk STT integration
+- [x] Google Cloud STT integration
 - [x] Synthetic audio/text emotion detection
 - [x] Rule-based intent detection
-- [x] Coqui TTS integration (Python 3.10 via pyenv)
+- [x] Google TTS integration
 - [x] Robust fallback for unknown/empty input
 - [x] Text and audio pipeline test scripts
 - [ ] Real emotion classifier (planned)
@@ -98,14 +98,15 @@ source venv/bin/activate
 
 ```bash
 pip install --upgrade pip
-pip install TTS soundfile librosa scikit-learn numpy sounddevice pyttsx3 vosk textblob
+pip install -r requirements.txt
 ```
 
-### 4. Download and link the Vosk model
+### 4. Set up Google Cloud credentials
 
-Download a Vosk model (e.g., `vosk-model-small-en-us-0.15`) and symlink as `models/vosk`:
+Set up Google Cloud Speech-to-Text API credentials:
 ```bash
-ln -s models/vosk-model-small-en-us-0.15 models/vosk
+# Set the environment variable to your service account key file
+export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/service-account-key.json"
 ```
 
 ### 5. Train or generate a synthetic emotion classifier

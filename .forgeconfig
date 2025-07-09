@@ -1,0 +1,6 @@
+{
+  "agent": "muse",
+  "model": "claude-sonnet-4",
+  "instructions": "You're an AI development assistant helping improve a modular emotion-aware voice assistant."
+}
+
